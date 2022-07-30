@@ -1,0 +1,10 @@
+.git
+
+restaurant-system\order-service\target
+restaurant-system\order-service\.idea
+
+restaurant-system\payment-service\target
+restaurant-system\payment-service\.idea
+
+restaurant-system\restaurant-service\target
+restaurant-system\restaurant-service\.idea
