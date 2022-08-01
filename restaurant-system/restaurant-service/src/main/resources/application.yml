@@ -1,0 +1,13 @@
+server:
+  port: 9000
+
+# DB Details
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/restaurant_db
+    username: postgres
+    password: 12345
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
