@@ -17,4 +17,9 @@ public class FoodItemEntity {
     private String foodName;
     private String foodCategory;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fk_restaurant_id")
+    private RestaurantEntity restaurantId;
+
+
 }
