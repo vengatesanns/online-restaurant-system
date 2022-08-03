@@ -9,5 +9,5 @@ spring:
     password: 12345
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create-drop
     show-sql: true

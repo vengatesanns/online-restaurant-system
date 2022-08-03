@@ -16,8 +16,14 @@ public class RestaurantEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long restaurantId;
+
+    @Column(nullable = false)
     private String restaurantName;
+
+    @Column(nullable = false)
     private String location;
+
+    @Column(nullable = false)
     private int phoneNumber;
 
     @OneToMany(cascade = CascadeType.ALL)

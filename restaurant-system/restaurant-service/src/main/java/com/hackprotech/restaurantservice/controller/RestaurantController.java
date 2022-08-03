@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -22,15 +23,14 @@ public class RestaurantController {
     }
 
     @GetMapping("/fetch-all")
-    public List<RestaurantEntity> fetchAllRestaurantDetails() {
-        return restaurantService.getAllRestaurantDetails();
+    public ResponseEntity<List<RestaurantEntity>> fetchAllRestaurantDetails() {
+        return ResponseEntity.status(200).body(restaurantService.getAllRestaurantDetails());
     }
 
     @PostMapping("/save")
-    public ResponseEntity<RestaurantEntity> saveRestaurantDetails(@RequestBody RestaurantEntity restaurantRequest) {
+    public ResponseEntity<RestaurantEntity> saveRestaurantDetails(@Valid @RequestBody RestaurantEntity restaurantRequest) {
         RestaurantEntity restaurantEntity = restaurantService.saveRestaurantDetails(restaurantRequest);
         return ResponseEntity.status(200).body(restaurantEntity);
     }
-
 
 }
