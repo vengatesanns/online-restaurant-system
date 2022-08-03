@@ -23,8 +23,7 @@ public class RestaurantController {
 
     @GetMapping("/fetch-all")
     public List<RestaurantEntity> fetchAllRestaurantDetails() {
-        List<RestaurantEntity> restaurantEntity = restaurantService.getAllRestaurantDetails();
-        return restaurantEntity;
+        return restaurantService.getAllRestaurantDetails();
     }
 
     @PostMapping("/save")
