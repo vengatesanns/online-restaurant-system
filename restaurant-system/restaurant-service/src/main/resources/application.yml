@@ -1,7 +1,15 @@
+# Service Port Number
 server:
   port: 9000
 
+# Service Name
+spring:
+  application:
+    name: restaurant-service
+
+
 # DB Details
+---
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/restaurant_db
@@ -9,5 +17,5 @@ spring:
     password: 12345
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
     show-sql: true
