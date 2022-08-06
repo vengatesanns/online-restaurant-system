@@ -1,0 +1,8 @@
+.offline {
+    background-color: red;
+    color: white;
+}
+
+.offlines {
+    border: 5px solid black;
+}

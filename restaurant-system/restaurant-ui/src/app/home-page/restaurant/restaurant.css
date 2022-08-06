@@ -1,0 +1,34 @@
+.restaurant-content {
+    height: 100%;
+    text-align: center;
+}
+
+.restaurant-content-left {
+    border: 3px solid black;
+    width: 40%;
+    float:left;
+    overflow: scroll;
+}
+
+.restaurant-content-right {
+    border: 3px solid black;
+    width: 60%;
+    float:right;
+}
+
+.heading {
+    font-weight: 500;
+}
+
+img {
+    max-width:50%;
+    max-height:50%;
+}
+
+.btn-proceedToOrder {
+    background-color: green;
+    color: white;
+}
+
+.footer-restaurant {
+}

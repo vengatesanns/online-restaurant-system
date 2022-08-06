@@ -8,17 +8,4 @@ import { RestaurantService } from './services/restaurant.service';
 })
 export class AppComponent {
 
-    constructor(private restaurantService: RestaurantService) {
-      this.getRestaurantDetails()
-
-    }
-
-
-    getRestaurantDetails = () => {
-          this.restaurantService.fetchRestaurantDetails().subscribe(response => {
-            console.log(response)
-          })
-    }
-
-
 }
