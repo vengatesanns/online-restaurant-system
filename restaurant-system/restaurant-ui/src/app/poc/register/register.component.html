@@ -1,0 +1,33 @@
+<form>
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input
+      id="username"
+      name="username"
+      class="form-control"
+      [(ngModel)]="userInfo.username"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input
+      id="email"
+      name="email"
+      class="form-control"
+      [(ngModel)]="userInfo.emailId"
+    />
+  </div>
+  <div class="form-group">
+    <label for="phoneNumber">Phone Number</label>
+    <input
+      id="phoneNumber"
+      class="form-control"
+      name="phoneNumber"
+      [(ngModel)]="userInfo.phoneNumber"
+    />
+  </div>
+  <div class="form-group">
+    <button class="btn btn-success" (click)="onSubmit()">Submit</button>
+  </div>
+</form>

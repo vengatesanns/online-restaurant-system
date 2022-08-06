@@ -1,0 +1,15 @@
+<div class="display-content">
+  <ul>
+    <li *ngFor="let user of userDetails" name="{{ user.username }}">
+      <h4>
+        Username: <span>{{ user.username }}</span>
+      </h4>
+      <h4>
+        EmailID: <span>{{ user.emailId }}</span>
+      </h4>
+      <h4>
+        Phoneumber: <span>{{ user.phoneNumber }}</span>
+      </h4>
+    </li>
+  </ul>
+</div>
