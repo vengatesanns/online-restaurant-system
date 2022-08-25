@@ -3,17 +3,9 @@ package com.hackprotech.orderservice.request;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
-public class OrderRequest {
-
-    private long restaurantId;
+public class PaymentRequest {
+    private Long orderId;
     private String modeOfPayment;
-    private List<FoodItemsRequest> foodItems;
-
 }
-
-
-

@@ -1,18 +1,18 @@
 # Service Port Number
 server:
-  port: 9100
+  port: 9200
 
 # Service Name
 spring:
   application:
-    name: order-service
+    name: payment-service
 
 
 # DB Details
 ---
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/order_db
+    url: jdbc:postgresql://localhost:5432/payment_db
     username: postgres
     password: 12345
   jpa:
