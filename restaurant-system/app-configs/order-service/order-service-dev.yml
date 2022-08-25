@@ -2,12 +2,6 @@
 server:
   port: 9100
 
-# Service Name
-spring:
-  application:
-    name: order-service
-
-
 # DB Details
 ---
 spring:
