@@ -7,7 +7,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 class RestaurantServiceApplicationTests {
 
 	@Test
-	void contextLoads() {
+	private void contextLoads() {
+	}
+	@Test
+	void contextLoads1() {
 	}
 
 }

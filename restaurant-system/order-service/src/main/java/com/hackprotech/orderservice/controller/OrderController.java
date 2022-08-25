@@ -19,6 +19,7 @@ public class OrderController {
 
     @PostMapping("/new-order")
     public ResponseEntity<String> newOrder(@RequestBody OrderRequest orderRequest) {
+        orderService.newOrder(orderRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body("Order Created Successfully!!!");
     }
 

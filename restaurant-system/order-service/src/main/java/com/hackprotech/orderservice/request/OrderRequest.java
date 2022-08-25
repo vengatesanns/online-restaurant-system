@@ -10,7 +10,7 @@ import java.util.List;
 public class OrderRequest {
 
     private long restaurantId;
-    private List<FoodItems> foodItems;
+    private List<FoodItemsRequest> foodItems;
 
 }
 

@@ -8,18 +8,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "order")
+@Table(name = "order_tbl")
 @Getter
 @Setter
 public class OrderEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long orderId;
+    private long id;
+
     private Long restaurantId;
     private Long userId;
 
-    @OneToMany(mappedBy = "foodId")
-    private List<OrderedFoodItemsEntity> orderedFoodItemsEntityList = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_id", referencedColumnName = "id")
+    private List<FoodItemsOrder> foodItemsOrderList = new ArrayList<>();
 
 }
