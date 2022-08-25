@@ -2,6 +2,7 @@ package com.hackprotech.restaurantservice.models;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -11,6 +12,8 @@ import java.util.Set;
 @Table(name = "restaurants")
 @Getter
 @Setter
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY, region = "restaurant")
 public class RestaurantEntity {
 
     @Id

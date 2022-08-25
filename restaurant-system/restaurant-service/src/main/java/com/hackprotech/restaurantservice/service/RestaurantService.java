@@ -1,4 +1,4 @@
-package com.hackprotech.restaurantservice;
+package com.hackprotech.restaurantservice.service;
 
 import com.hackprotech.restaurantservice.dao.RestaurantRepository;
 import com.hackprotech.restaurantservice.models.RestaurantEntity;
