@@ -1,0 +1,19 @@
+# Service Name
+spring:
+  application:
+    name: order-service
+
+
+# Profiles
+---
+spring:
+  profiles:
+    active: dev
+
+
+# Spring Cloud Config Server URI
+---
+spring:
+  config:
+    import: "configserver:"
+

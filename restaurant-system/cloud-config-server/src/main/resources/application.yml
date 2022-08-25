@@ -3,9 +3,32 @@ server:
   port: 8888
 
 spring:
+  application:
+    name: cloud-config-server
+
+---
+spring:
   cloud:
     config:
       server:
         git:
-          uri: https://github.com/vengatesanns/online-restaurant-system.git
-          searchPaths: '{application}'
+          uri: https://github.com/vengatesanns/online-restaurant-system
+          repos:
+            order-service-repos:
+              uri: https://github.com/vengatesanns/online-restaurant-system
+              pattern:
+                - order-service
+              searchPaths:
+                - restaurant-system/app-configs/{application}
+            payment-service-repos:
+              uri: https://github.com/vengatesanns/online-restaurant-system
+              pattern:
+                - payment-service
+              searchPaths:
+                - restaurant-system/app-configs/{application}
+            restaurant-service-repos:
+              uri: https://github.com/vengatesanns/online-restaurant-system
+              pattern:
+                - restaurant-service
+              searchPaths:
+                - restaurant-system/app-configs/{application}
