@@ -1,4 +1,5 @@
 .git
+.idea
 
 restaurant-system\order-service\target
 restaurant-system\order-service\.idea

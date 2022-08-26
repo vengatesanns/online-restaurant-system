@@ -1,0 +1,15 @@
+# LANGUAGE
+language: java
+jdk:
+  - openjdk8
+
+
+# JOBS
+jobs:
+  include:
+    - stage: BUILD
+      script:
+        - chmod -R 777 ./restaurant-system/
+        - echo ">>> Build the services using mvn clean install"
+        - cd ./restaurant-system/
+        - mvn -f cloud-config-server/pom.xml clean install
