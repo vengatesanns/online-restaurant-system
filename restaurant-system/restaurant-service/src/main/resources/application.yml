@@ -1,21 +1,18 @@
-# Service Port Number
-server:
-  port: 9000
-
 # Service Name
 spring:
   application:
     name: restaurant-service
 
-
-# DB Details
+# Profiles
 ---
 spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/restaurant_db
-    username: postgres
-    password: 12345
-  jpa:
-    hibernate:
-      ddl-auto: none
-    show-sql: true
+  profiles:
+    active: dev
+
+
+# Spring Cloud Config Server URI
+---
+spring:
+  config:
+    import: "configserver:"
+
