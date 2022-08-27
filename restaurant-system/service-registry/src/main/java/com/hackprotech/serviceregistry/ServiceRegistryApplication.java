@@ -1,17 +1,16 @@
-package com.hackprotech.orderservice;
+package com.hackprotech.serviceregistry;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 @SpringBootApplication
-@EnableFeignClients
-@EnableEurekaClient
-public class OrderServiceApplication {
+@EnableEurekaServer
+public class ServiceRegistryApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(OrderServiceApplication.class, args);
+        SpringApplication.run(ServiceRegistryApplication.class, args);
     }
 
 }

@@ -18,7 +18,7 @@ public class OrderController {
     private OrderService orderService;
 
     @PostMapping("/new-order")
-    public ResponseEntity<String> newOrder(@RequestBody OrderRequest orderRequest) {
+    public ResponseEntity<String> newOrder(@RequestBody OrderRequest orderRequest) throws InterruptedException {
         orderService.newOrder(orderRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body("Order Created Successfully!!!");
     }

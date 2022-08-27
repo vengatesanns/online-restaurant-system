@@ -17,7 +17,7 @@ public class PaymentController {
     @Autowired
     private PaymentService paymentService;
 
-    @PostMapping("process-payment")
+    @PostMapping("/process-payment")
     public ResponseEntity<String> processPayment(@RequestBody PaymentRequest paymentRequest) {
         paymentService.processPayment(paymentRequest);
         return ResponseEntity.status(HttpStatus.OK).body("Payment Success");
