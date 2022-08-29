@@ -6,9 +6,10 @@ server:
 ---
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/payment_db
-    username: postgres
+    url: jdbc:sqlserver://localhost;databaseName=payment_db;encrypt=true;trustServerCertificate=true
+    username: sa
     password: 12345
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
   jpa:
     hibernate:
       ddl-auto: create-drop

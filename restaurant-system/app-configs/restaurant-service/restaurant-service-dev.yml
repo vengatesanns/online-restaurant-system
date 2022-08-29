@@ -6,10 +6,11 @@ server:
 ---
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/restaurant_db
-    username: postgres
+    url: jdbc:sqlserver://localhost;databaseName=restaurant_db;encrypt=true;trustServerCertificate=true
+    username: sa
     password: 12345
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create-drop
     show-sql: true
