@@ -1,10 +1,10 @@
-package com.hackprotech.orderservice;
+package com.hackprotech.paymentservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class OrderServiceApplicationTests {
+class PaymentServiceImplApplicationTests {
 
 	@Test
 	void contextLoads() {
