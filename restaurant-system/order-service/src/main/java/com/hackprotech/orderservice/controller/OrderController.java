@@ -1,8 +1,9 @@
 package com.hackprotech.orderservice.controller;
 
+import com.hackprotech.orderservice.dto.OrderDTO;
 import com.hackprotech.orderservice.exceptions.OrderServiceException;
 import com.hackprotech.orderservice.request.OrderRequest;
-import com.hackprotech.orderservice.service.impl.OrderServiceImpl;
+import com.hackprotech.orderservice.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,12 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderController {
 
     @Autowired
-    private OrderServiceImpl orderServiceImpl;
+    private OrderService orderServiceImpl;
 
     @PostMapping("/new-order")
-    public ResponseEntity<String> newOrder(@RequestBody OrderRequest orderRequest) throws OrderServiceException {
-        orderServiceImpl.saveNewFoodOrder(orderRequest);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Order Created Successfully!!!");
+    public ResponseEntity<OrderDTO> newOrder(@RequestBody OrderRequest orderRequest) throws OrderServiceException {
+        OrderDTO orderDTO = orderServiceImpl.saveNewFoodOrder(orderRequest);
+        return ResponseEntity.status(HttpStatus.CREATED).body(orderDTO);
     }
 
 }

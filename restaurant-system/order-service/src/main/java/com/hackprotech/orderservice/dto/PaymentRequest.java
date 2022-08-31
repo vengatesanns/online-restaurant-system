@@ -1,4 +1,4 @@
-package com.hackprotech.orderservice.request;
+package com.hackprotech.orderservice.dto;
 
 import lombok.Getter;
 import lombok.Setter;

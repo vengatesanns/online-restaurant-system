@@ -22,6 +22,6 @@ public class OrderEntity {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "order_id", referencedColumnName = "id")
-    private List<FoodItemsOrder> foodItemsOrderList = new ArrayList<>();
+    private List<FoodItem> foodItems = new ArrayList<>();
 
 }

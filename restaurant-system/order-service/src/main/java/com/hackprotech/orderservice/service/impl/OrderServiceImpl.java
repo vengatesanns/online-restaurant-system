@@ -1,25 +1,26 @@
 package com.hackprotech.orderservice.service.impl;
 
 import com.hackprotech.orderservice.dao.OrderRepository;
+import com.hackprotech.orderservice.dto.OrderDTO;
+import com.hackprotech.orderservice.dto.PaymentRequest;
 import com.hackprotech.orderservice.exceptions.OrderServiceException;
 import com.hackprotech.orderservice.exceptions.PaymentProcessException;
-import com.hackprotech.orderservice.model.FoodItemsOrder;
+import com.hackprotech.orderservice.model.FoodItem;
 import com.hackprotech.orderservice.model.OrderEntity;
 import com.hackprotech.orderservice.proxy.PaymentProxy;
-import com.hackprotech.orderservice.request.FoodItemsRequest;
 import com.hackprotech.orderservice.request.OrderRequest;
-import com.hackprotech.orderservice.request.PaymentRequest;
 import com.hackprotech.orderservice.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -31,31 +32,41 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private PaymentProxy paymentProxy;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
+
     @Override
-    @Transactional(propagation = Propagation.REQUIRED)
-    public void saveNewFoodOrder(OrderRequest orderRequest) {
+    public OrderDTO saveNewFoodOrder(OrderRequest orderRequest) {
+        OrderDTO orderDTO;
         try {
             log.info("Processing new Order");
-            OrderEntity orderEntity = new OrderEntity();
-            orderEntity.setRestaurantId(orderRequest.getRestaurantId());
+            // Order Details
+            OrderEntity orderEntity = modelMapper.map(orderRequest, OrderEntity.class);
             orderEntity.setUserId(5555l);
 
             // Ordered Food Items
-            for (FoodItemsRequest foodItemsRequest : orderRequest.getFoodItems()) {
-                FoodItemsOrder foodItemsOrder = new FoodItemsOrder();
-                foodItemsOrder.setFoodId(foodItemsRequest.getFoodId());
-                foodItemsOrder.setQuantity(foodItemsRequest.getQuantity());
-                orderEntity.getFoodItemsOrderList().add(foodItemsOrder);
+            List<FoodItem> foodItemList = orderRequest.getFoodItems().stream().map(foodItem -> modelMapper.map(foodItem, FoodItem.class)).collect(Collectors.toList());
+            orderEntity.setFoodItems(foodItemList);
+
+            OrderEntity processedOrder = orderRepository.save(orderEntity);
+
+            if (Objects.isNull(processedOrder)) {
+                throw new OrderServiceException("Error while saving the Order Details");
             }
-            OrderEntity persistedOrder = orderRepository.save(orderEntity);
+
             log.info("Order Placed Successfully");
+            orderDTO = modelMapper.map(processedOrder, OrderDTO.class);
+            orderDTO.setOrderId(processedOrder.getId());
+
 
             // Process Payment
-            this.processPayment(persistedOrder, orderRequest);
+//            this.processPayment(persistedOrder, orderRequest);
         } catch (Exception ex) {
             log.error("Error while save new food order -> saveNewFoodOrder()", ex);
             throw new OrderServiceException("FAILED while order new food items");
         }
+        return orderDTO;
     }
 
     @Override

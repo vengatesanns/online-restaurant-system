@@ -1,6 +1,8 @@
 package com.hackprotech.orderservice.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -9,7 +11,9 @@ import javax.persistence.*;
 @Table(name = "food_items_order")
 @Getter
 @Setter
-public class FoodItemsOrder {
+@AllArgsConstructor
+@NoArgsConstructor
+public class FoodItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
