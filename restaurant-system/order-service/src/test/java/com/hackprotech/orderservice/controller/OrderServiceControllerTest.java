@@ -27,7 +27,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-@WebMvcTest(value = OrderController.class, properties = "application.yml")
+@WebMvcTest(value = OrderController.class)
 public class OrderServiceControllerTest {
 
     @InjectMocks
