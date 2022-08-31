@@ -1,4 +1,21 @@
+# To Disable the Cloud Config Server for Unit Tests
 spring:
   cloud:
     config:
+      discovery:
+        enabled: false
       enabled: false
+    discovery:
+      enabled: false
+
+# In memory H2 DB for Integration test cases
+---
+spring:
+  datasource:
+    url: "jdbc:h2:mem:test_db"
+    username: root
+    password: root
+    driver-class-name: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
