@@ -43,7 +43,7 @@ public class OrderServiceImplTest {
     @BeforeEach
     public void createOrderRequest() {
         orderRequest = new OrderRequest();
-        orderRequest.setRestaurantId(1);
+        orderRequest.setRestaurantId(1l);
         orderRequest.setModeOfPayment("UPI");
         List<FoodItemsRequest> foodItems = new ArrayList<>();
         foodItems.add(new FoodItemsRequest(100l, 2));
@@ -53,7 +53,7 @@ public class OrderServiceImplTest {
 
     @Test
     @DisplayName("Test the save functionality of new Food Order")
-    public void saveNewFoodOrderTest() {
+    public void saveNewFoodOrder() {
         OrderEntity orderEntity = new OrderEntity();
         orderEntity.setRestaurantId(1l);
         orderEntity.setId(1);
@@ -78,11 +78,31 @@ public class OrderServiceImplTest {
     }
 
     @Test
-    @DisplayName("OrderService Exception will be thrown due to Save Operation")
+    @DisplayName("NullPointerException will be thrown due to orderRequestNull")
     public void saveNewFoodOrder_with_NullPointerException() {
         orderRequest = null;
         OrderServiceException orderServiceException = assertThrows(OrderServiceException.class, () -> orderServiceImpl.saveNewFoodOrder(orderRequest));
         assertEquals(orderServiceException.getMessage(), "FAILED while order new food items");
     }
+
+    @Test
+    @DisplayName("OrderRepository Save should be called only once")
+    public void verify_orderRepo_save_called_only_once() {
+        OrderEntity orderEntity = new OrderEntity();
+        orderEntity.setRestaurantId(1l);
+        orderEntity.setId(1);
+        List<FoodItem> foodItemList = orderEntity.getFoodItems();
+        foodItemList.add(new FoodItem(1, 100l, 2));
+        foodItemList.add(new FoodItem(2, 200l, 6));
+
+        when(orderRepository.save(Mockito.any(OrderEntity.class))).thenReturn(orderEntity);
+
+        OrderDTO orderDTO = orderServiceImpl.saveNewFoodOrder(orderRequest);
+
+        Assertions.assertEquals(orderEntity.getId(), orderDTO.getOrderId());
+        Assertions.assertEquals(orderEntity.getRestaurantId(), orderDTO.getRestaurantId());
+        Mockito.verify(orderRepository, Mockito.times(1)).save(Mockito.any(OrderEntity.class));
+    }
+
 
 }

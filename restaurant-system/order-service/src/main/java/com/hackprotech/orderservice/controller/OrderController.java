@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/order")
 public class OrderController {
@@ -20,7 +22,7 @@ public class OrderController {
     private OrderService orderServiceImpl;
 
     @PostMapping("/new-order")
-    public ResponseEntity<OrderDTO> newOrder(@RequestBody OrderRequest orderRequest) throws OrderServiceException {
+    public ResponseEntity<OrderDTO> newOrder(@RequestBody @Valid OrderRequest orderRequest) throws OrderServiceException {
         OrderDTO orderDTO = orderServiceImpl.saveNewFoodOrder(orderRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(orderDTO);
     }
