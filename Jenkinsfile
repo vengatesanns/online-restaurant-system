@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Build Order Service Project') {
             steps {
-                ls -la
+                sh ls -la
             }
         }
     }
