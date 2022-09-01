@@ -1,0 +1,12 @@
+# DB Details
+---
+spring:
+  datasource:
+    url: jdbc:sqlserver://localhost;databaseName=users_db;encrypt=true;trustServerCertificate=true
+    username: sa
+    password: 12345
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
