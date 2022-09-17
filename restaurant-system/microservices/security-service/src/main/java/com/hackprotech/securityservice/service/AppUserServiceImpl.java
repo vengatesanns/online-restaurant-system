@@ -14,6 +14,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -26,6 +27,9 @@ public class AppUserServiceImpl implements UserDetailsService, AppUserService {
 
     @Autowired
     private GroupRepository groupRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     // @formatter:off
     @Override
@@ -58,7 +62,7 @@ public class AppUserServiceImpl implements UserDetailsService, AppUserService {
             AppUser newUser = new AppUser();
             newUser.setFirstName(userRequest.getFirstName());
             newUser.setLastName(userRequest.getLastName());
-            newUser.setPassword(userRequest.getPassword());
+            newUser.setPassword(passwordEncoder.encode(userRequest.getPassword()));
             newUser.setEmail(userRequest.getEmail().toLowerCase());
             newUser.setPhoneNumber(userRequest.getPhoneNumber());
             newUser.setEnabled(Boolean.TRUE);
