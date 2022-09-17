@@ -11,11 +11,20 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
 
+    // @formatter:off
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.authorizeRequests().antMatchers("/user/register-new-user").authenticated().antMatchers("/token").permitAll().and().formLogin().and().httpBasic();
+        httpSecurity.authorizeRequests()
+                .antMatchers("/user/register-new-user")
+                .authenticated()
+                .antMatchers("/token", "/user/sign-up")
+                .permitAll().and().formLogin()
+                .and()
+                .csrf().disable()
+                .httpBasic();
         return httpSecurity.build();
     }
+    // @formatter:on
 
     @Bean
     public PasswordEncoder passwordEncoder() {

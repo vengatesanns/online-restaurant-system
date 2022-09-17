@@ -11,11 +11,12 @@ import org.springframework.web.bind.annotation.*;
 public class AppUserController {
 
     @Autowired
-    private AppUserService appUserService;
+    private AppUserService appUserServiceImpl;
 
-    @PostMapping("/register-user")
+    @PostMapping("/sign-up")
     public ResponseEntity<String> registerNewUser(@RequestBody UserRequest userRequest) {
-        return ResponseEntity.ok("Hello Vengat!!!");
+        appUserServiceImpl.signUpUser(userRequest);
+        return ResponseEntity.ok("User Created Successfully!!!");
     }
 
     @GetMapping("/test")

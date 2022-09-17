@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
+@Entity(name = "AppUser")
 @Table(name = "users")
 @Getter
 @Setter
@@ -26,10 +26,8 @@ public class AppUser {
     private Boolean credentialsNonExpired;
     private Boolean enabled;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "user_groups",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "group_id"))
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.REMOVE})
+    @JoinTable(name = "user_groups", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
     private Set<Group> groups = new HashSet<>();
 
 }
