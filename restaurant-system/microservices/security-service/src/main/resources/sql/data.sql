@@ -29,11 +29,11 @@ INSERT INTO users(account_non_expired
 
 
 -- roles table
-INSERT INTO roles(role_name) VALUES('ROLE_ADMIN');
-INSERT INTO roles(role_name) VALUES('ROLE_CUSTOMER');
-INSERT INTO roles(role_name) VALUES('ROLE_DEVELOPER');
-INSERT INTO roles(role_name) VALUES('ROLE_QA');
-INSERT INTO roles(role_name) VALUES('ROLE_GUEST');
+INSERT INTO roles(role_name, created_date_time ,updated_date_time) VALUES('ROLE_ADMIN', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO roles(role_name, created_date_time ,updated_date_time) VALUES('ROLE_CUSTOMER', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO roles(role_name, created_date_time ,updated_date_time) VALUES('ROLE_DEVELOPER', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO roles(role_name, created_date_time ,updated_date_time) VALUES('ROLE_QA', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO roles(role_name, created_date_time ,updated_date_time) VALUES('ROLE_GUEST', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 
 -- user_roles table

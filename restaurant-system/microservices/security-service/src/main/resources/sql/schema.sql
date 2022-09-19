@@ -1,3 +1,8 @@
+-- Drop tables
+drop table user_roles;
+drop table users;
+drop table roles;
+
 -- user table
 CREATE TABLE users(
 	id bigint IDENTITY(1,1) NOT NULL,

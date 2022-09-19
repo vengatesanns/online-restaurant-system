@@ -64,7 +64,7 @@ public class AppUserServiceImpl implements AppUserService {
             newUser.setUpdatedDateTime(Date.from(Instant.now()));
 
             Roles roles = roleRepository.findByRoleName(UserRoles.CUSTOMER.toString());
-
+            roles.setUpdatedDateTime(Date.from(Instant.now()));
             newUser.getRoles().add(roles);
             appUserRepository.save(newUser);
 
