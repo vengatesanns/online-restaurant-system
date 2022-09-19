@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { Router } from "@angular/router";
 import { LoginModel } from "src/app/model/login.model";
 import { LoginService } from "src/app/services/login.service";
@@ -13,29 +13,29 @@ export class LoginComponent implements OnInit {
 
     // Variable Declarations
 
-    loginFormGroup: FormGroup = this.fb.group({
-        email: [],
-        password: []
-    });
+    loginForm: FormGroup = new FormGroup({});
 
 
-    constructor(private fb: FormBuilder,
+    constructor(private _formBuilder: FormBuilder,
         private loginService: LoginService,
         private router: Router) {
-        console.log(this.fb);
     }
 
 
     // lifecycle hooks
     ngOnInit() {
+        this.loginForm = this._formBuilder.group({
+            email: new FormControl(),
+            password: new FormControl()
+        });
     }
 
 
     // Methods
     validateLoginUser() {
         let self = this;
-        let email = this.loginFormGroup.value.email;
-        let password = this.loginFormGroup.value.password;
+        let email = this.loginForm.value.email;
+        let password = this.loginForm.value.password;
         let loginModel: LoginModel = new LoginModel(email, password);
         this.loginService.validateLUserDetails(loginModel).subscribe(response => {
             console.log(response);
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
     }
 
     formReset = () => {
-        this.loginFormGroup.reset();
+        this.loginForm.reset();
     }
 
 
