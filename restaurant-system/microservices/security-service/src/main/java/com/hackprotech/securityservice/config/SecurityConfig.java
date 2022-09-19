@@ -1,5 +1,6 @@
 package com.hackprotech.securityservice.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -12,15 +13,21 @@ public class SecurityConfig {
 
     public static final int ROUNDS = 15;
 
+    @Autowired
+    private CustomCorsConfigurationSource customCorsConfigurationSource;
+
 
     // @formatter:off
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.authorizeRequests()
+        httpSecurity
+                .cors().configurationSource(customCorsConfigurationSource)
+                .and()
+                .authorizeRequests()
                 .antMatchers("/user/**")
                 .authenticated()
                 .antMatchers("/token", "/user/sign-up")
-                .permitAll().and().formLogin()
+                .permitAll()
                 .and()
                 .csrf().disable()
                 .httpBasic();

@@ -1,26 +1,45 @@
-import { Component } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { LoginModel } from "src/app/model/login.model";
+import { LoginService } from "src/app/services/login.service";
 
 @Component({
     selector: "login",
     templateUrl: "./login.component.html",
     styleUrls: ["./login.scss"]
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
     // Variable Declarations
     hide: Boolean = true;
+    loginFormGroup: FormGroup;
 
-    loginFormGroup: FormGroup = new FormGroup({
-        email: new FormControl(),
-        password: new FormControl()
-    });
+
+    constructor(private formBuilder: FormBuilder, private loginService: LoginService) {
+        this.loginFormGroup = this.formBuilder.group({
+            email: [],
+            password: []
+        });
+    }
+
+
+    // lifecycle hooks
+    ngOnInit() {
+
+    }
 
 
     // Methods
-    validateLoginUser = () => {
+    validateLoginUser() {
         console.log(this.loginFormGroup);
+        let email = this.loginFormGroup.value.email;
+        let password = this.loginFormGroup.value.password;
+        let loginModel: LoginModel = new LoginModel(email, password);
+        this.loginService.validateLUserDetails(loginModel).subscribe(response => {
+            console.log(response);
+        }, error => {
+            console.error(error);
+        });
     }
 
     formReset = () => {

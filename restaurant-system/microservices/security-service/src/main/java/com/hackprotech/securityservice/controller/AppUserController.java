@@ -19,8 +19,8 @@ public class AppUserController {
         return ResponseEntity.ok("User Created Successfully!!!");
     }
 
-    @GetMapping("/test")
-    public ResponseEntity<String> registerNewUser() {
+    @GetMapping("/login")
+    public ResponseEntity<String> registerNewUser1() {
         return ResponseEntity.ok("Hello Vengat!!!");
     }
 }
