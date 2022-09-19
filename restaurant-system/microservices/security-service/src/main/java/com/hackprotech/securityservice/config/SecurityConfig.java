@@ -25,13 +25,13 @@ public class SecurityConfig {
                 .cors().configurationSource(customCorsConfigurationSource)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/user/**")
-                .authenticated()
                 .antMatchers("/token", "/user/sign-up")
                 .permitAll()
+                .antMatchers("/user/**")
+                .authenticated()
                 .and()
-                .csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-                .and()
+                .csrf().disable()
+//                .csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 .httpBasic();
         return httpSecurity.build();
     }

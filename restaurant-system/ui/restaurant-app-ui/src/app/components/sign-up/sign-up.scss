@@ -1,12 +1,12 @@
-.login-body {
+.sign-up-body {
     margin: auto;
     width: 30%;
-    padding-top: 10%;
     text-align: center;
+    padding-top: 6%;
 }
 
 p {
-    margin: 35px !important;
+    margin: 10px !important;
 }
 
 .mat-form-field {
@@ -20,21 +20,11 @@ p {
     border-radius: 30px;
 }
 
-.login-card-footer {
+.sign-up-card-footer {
     text-align: center;
     button {
         margin-top: 10px;
         margin-right: 20px;
         margin-bottom: 20px;
-    }
-
-    .footer-href-link {
-        display: flex;
-        justify-content: space-around;
-        margin-bottom: 10px;
-    }
-
-    .forget-password {
-        // margin: 10px;
     }
 }

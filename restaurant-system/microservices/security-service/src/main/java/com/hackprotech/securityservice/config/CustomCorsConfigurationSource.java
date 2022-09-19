@@ -14,7 +14,6 @@ public class CustomCorsConfigurationSource implements CorsConfigurationSource {
     public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.setAllowedHeaders(Collections.singletonList("*"));
-        corsConfiguration.setAllowedHeaders(Collections.singletonList("*"));
         corsConfiguration.addAllowedOrigin("http://localhost:4200");
         return corsConfiguration;
     }

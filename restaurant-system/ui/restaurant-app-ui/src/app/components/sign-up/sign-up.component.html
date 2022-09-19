@@ -1,0 +1,60 @@
+<div class="sign-up-body">
+  <form [formGroup]="signUpForm" (ngSubmit)="registerNewUser()">
+    <mat-card>
+      <mat-card-title>SignUp</mat-card-title>
+      <mat-card-content>
+        <!-- FirstName -->
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="firstName" />
+          </mat-form-field>
+        </p>
+
+        <!-- LastName -->
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastName" />
+          </mat-form-field>
+        </p>
+
+        <!-- Email -->
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              placeholder="test@email.com"
+              formControlName="email"
+            />
+          </mat-form-field>
+        </p>
+
+        <!-- PhoneNumber -->
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Phone Number</mat-label>
+            <input matInput formControlName="phoneNumber" />
+          </mat-form-field>
+        </p>
+
+        <!-- Password -->
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password" />
+          </mat-form-field>
+        </p>
+      </mat-card-content>
+      <mat-card-footer>
+        <div class="sign-up-card-footer">
+          <button mat-raised-button color="warn" (click)="signUpFormReset()">
+            Clear
+          </button>
+          <button mat-raised-button color="warn" type="submit">Register</button>
+        </div>
+      </mat-card-footer>
+    </mat-card>
+  </form>
+</div>
