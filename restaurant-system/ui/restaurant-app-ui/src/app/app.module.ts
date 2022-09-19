@@ -2,20 +2,36 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { LoginModule } from './components/login/login.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardModule } from './components/dashboard/dashboard.module';
+import { AppRoutingModule } from './routers/app-routing,module';
+import { MatInputModule } from "@angular/material/input";
+import { MatIconModule } from "@angular/material/icon";
+import { MatCardModule } from "@angular/material/card";
+import { MatButtonModule } from "@angular/material/button";
+import { ReactiveFormsModule } from "@angular/forms";
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
   imports: [
     BrowserModule,
-    LoginModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    DashboardModule,
+    AppRoutingModule,
+    MatInputModule,
+    MatIconModule,
+    MatCardModule,
+    MatButtonModule,
+    ReactiveFormsModule
   ],
+
+  declarations: [
+    AppComponent,
+    LoginComponent
+  ],
+
   providers: [],
   bootstrap: [AppComponent]
 })
