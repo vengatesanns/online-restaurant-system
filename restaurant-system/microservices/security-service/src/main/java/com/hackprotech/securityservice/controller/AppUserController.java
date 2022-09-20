@@ -20,7 +20,8 @@ public class AppUserController {
     }
 
     @PutMapping("/profile/update")
-    public ResponseEntity<String> profileUpdate() {
+    public ResponseEntity<String> profileUpdate(@RequestBody UserRequest userRequest) {
+        appUserServiceImpl.profileUpdate(userRequest);
         return ResponseEntity.ok().body("Profile Updated!");
     }
 

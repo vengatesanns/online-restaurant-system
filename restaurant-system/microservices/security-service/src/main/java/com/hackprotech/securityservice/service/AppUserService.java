@@ -7,6 +7,8 @@ public interface AppUserService {
 
     void signUpUser(UserRequest userRequest);
 
+    void profileUpdate(UserRequest userRequest);
+
     AppUser validateLoginUser(String email);
 
 }

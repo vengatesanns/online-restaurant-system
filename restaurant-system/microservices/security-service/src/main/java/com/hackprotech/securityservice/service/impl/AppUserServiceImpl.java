@@ -3,11 +3,11 @@ package com.hackprotech.securityservice.service.impl;
 import com.hackprotech.securityservice.constants.UserRoles;
 import com.hackprotech.securityservice.dao.AppUserRepository;
 import com.hackprotech.securityservice.dao.RoleRepository;
+import com.hackprotech.securityservice.dto.UserRequest;
 import com.hackprotech.securityservice.exceptions.AppUserServiceException;
 import com.hackprotech.securityservice.exceptions.UserAlreadyExistsException;
 import com.hackprotech.securityservice.model.AppUser;
 import com.hackprotech.securityservice.model.Roles;
-import com.hackprotech.securityservice.dto.UserRequest;
 import com.hackprotech.securityservice.service.AppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.time.Instant;
 import java.util.Date;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class AppUserServiceImpl implements AppUserService {
@@ -71,6 +72,26 @@ public class AppUserServiceImpl implements AppUserService {
             throw userAlreadyExistsException;
         } catch (Exception ex) {
             throw new AppUserServiceException("Error While SignUp!");
+        }
+    }
+
+    @Override
+    public void profileUpdate(UserRequest userRequest) {
+        try {
+            Optional<AppUser> appUser = appUserRepository.findById(userRequest.getId());
+            if (appUser.isPresent()) {
+                AppUser existAppUser = appUser.get();
+                existAppUser.setFirstName(userRequest.getFirstName());
+                existAppUser.setLastName(userRequest.getLastName());
+                existAppUser.setEmail(userRequest.getEmail());
+                existAppUser.setPhoneNumber(userRequest.getPhoneNumber());
+                existAppUser.setUpdatedDateTime(Date.from(Instant.now()));
+                appUserRepository.save(existAppUser);
+            } else {
+                throw new UsernameNotFoundException("User Not Exception!");
+            }
+        } catch (Exception ex) {
+            throw new AppUserServiceException("Error while updating the profile");
         }
     }
 

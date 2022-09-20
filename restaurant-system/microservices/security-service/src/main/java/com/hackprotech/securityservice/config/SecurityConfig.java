@@ -25,7 +25,7 @@ public class SecurityConfig {
                 .cors().configurationSource(customCorsConfigurationSource)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/token", "/user/sign-up")
+                .antMatchers("/token", "/user/sign-up", "/user/profile/update")
                 .permitAll()
                 .antMatchers("/user/**")
                 .authenticated()

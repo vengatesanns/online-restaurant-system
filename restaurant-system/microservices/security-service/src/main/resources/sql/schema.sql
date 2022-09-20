@@ -9,7 +9,7 @@ CREATE TABLE users(
 	account_non_expired bit NOT NULL,
 	account_non_locked bit NOT NULL,
 	credentials_non_expired bit NOT NULL,
-	email varchar(255) NOT NULL,
+	email varchar(255) NOT NULL unique,
 	enabled bit NOT NULL,
 	first_name varchar(255) NULL,
 	last_name varchar(255) NULL,
