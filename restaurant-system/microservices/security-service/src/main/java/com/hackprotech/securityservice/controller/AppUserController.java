@@ -19,6 +19,11 @@ public class AppUserController {
         return ResponseEntity.ok("User Created Successfully!!!");
     }
 
+    @PutMapping("/profile/update")
+    public ResponseEntity<String> profileUpdate() {
+        return ResponseEntity.ok().body("Profile Updated!");
+    }
+
     @GetMapping("/login")
     public ResponseEntity<String> registerNewUser1() {
         return ResponseEntity.ok("Hello Vengat!!!");
