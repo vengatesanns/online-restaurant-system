@@ -13,7 +13,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { ReactiveFormsModule } from "@angular/forms";
 import { LoginComponent } from './components/login/login.component';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { SignUpComponent } from './components/signup/sign-up.component';
 import { SpinnerComponent } from './components/utils/spinner/spinner.component';
 import { AppRequestInterceptor } from './interceptors/app-request.interceptor';
 
