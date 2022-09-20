@@ -1,6 +1,6 @@
 package com.hackprotech.securityservice.controller;
 
-import com.hackprotech.securityservice.request.UserRequest;
+import com.hackprotech.securityservice.dto.UserRequest;
 import com.hackprotech.securityservice.service.AppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

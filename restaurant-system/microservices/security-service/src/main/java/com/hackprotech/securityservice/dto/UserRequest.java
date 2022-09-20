@@ -1,4 +1,4 @@
-package com.hackprotech.securityservice.request;
+package com.hackprotech.securityservice.dto;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -7,7 +7,7 @@ import com.hackprotech.securityservice.exceptions.AppUserServiceException;
 import com.hackprotech.securityservice.exceptions.UserAlreadyExistsException;
 import com.hackprotech.securityservice.model.AppUser;
 import com.hackprotech.securityservice.model.Roles;
-import com.hackprotech.securityservice.request.UserRequest;
+import com.hackprotech.securityservice.dto.UserRequest;
 import com.hackprotech.securityservice.service.AppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -63,8 +63,7 @@ public class AppUserServiceImpl implements AppUserService {
             newUser.setCreatedDateTime(Date.from(Instant.now()));
             newUser.setUpdatedDateTime(Date.from(Instant.now()));
 
-            Roles roles = roleRepository.findByRoleName(UserRoles.CUSTOMER.toString());
-            roles.setUpdatedDateTime(Date.from(Instant.now()));
+            Roles roles = roleRepository.findByRoleName(UserRoles.ROLE_CUSTOMER.toString());
             newUser.getRoles().add(roles);
             appUserRepository.save(newUser);
 

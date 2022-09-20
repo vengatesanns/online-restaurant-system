@@ -1,8 +1,7 @@
 package com.hackprotech.securityservice.service;
 
 import com.hackprotech.securityservice.model.AppUser;
-import com.hackprotech.securityservice.request.UserRequest;
-import org.springframework.security.core.userdetails.UserDetails;
+import com.hackprotech.securityservice.dto.UserRequest;
 
 public interface AppUserService {
 
