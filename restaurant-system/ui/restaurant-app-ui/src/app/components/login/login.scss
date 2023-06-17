@@ -3,6 +3,18 @@
     width: 30%;
     padding-top: 10%;
     text-align: center;
+
+
+    .form-color-red {
+        border-color: red;
+    }
+
+    .form-color-blue {
+        border-color: blue;
+    }
+    
+
+
 }
 
 p {
@@ -38,3 +50,5 @@ p {
         // margin: 10px;
     }
 }
+
+

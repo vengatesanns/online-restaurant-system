@@ -16,6 +16,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/signup/sign-up.component';
 import { SpinnerComponent } from './components/utils/spinner/spinner.component';
 import { AppRequestInterceptor } from './interceptors/app-request.interceptor';
+import { PopoverModule } from 'ngx-bootstrap/popover';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { AppRequestInterceptor } from './interceptors/app-request.interceptor';
     MatCardModule,
     MatButtonModule,
     ReactiveFormsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    PopoverModule.forRoot()
   ],
 
   declarations: [
