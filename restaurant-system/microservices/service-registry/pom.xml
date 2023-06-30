@@ -17,6 +17,15 @@
         <java.version>17</java.version>
         <spring-cloud.version>2022.0.3</spring-cloud.version>
     </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub OWNER Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/vengatesanns/online-restaurant-system</url>
+        </repository>
+    </distributionManagement>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
