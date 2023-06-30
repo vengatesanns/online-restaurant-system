@@ -1,0 +1,11 @@
+pipeline {
+    agent any
+    stages {
+        stage("Build") {
+             steps {
+                echo ">>>>> Build Service Registry..."
+                mvn -f ./microservices/service-registry/pom.xml clean install
+             }
+        }
+    }
+}
