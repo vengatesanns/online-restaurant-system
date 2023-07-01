@@ -4,6 +4,8 @@ pipeline {
         stage('Build') {
              steps {
                     echo ">>>>> Build Service Registry..."
+                    sh 'pwd'
+                    sh 'rm -r ./service-registry'ō
                     sh 'mvn clean install'
              }
         }
