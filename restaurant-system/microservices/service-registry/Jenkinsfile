@@ -1,17 +1,17 @@
 pipeline {
     agent any
     stages {
-
       stage('pre-build') {
+       steps {
             sh 'pwd'
             sh 'ls -ltr'
+         }
       }
-
        stage('app-build') {
              steps {
                     echo ">>>>> Build Service Registry..."
                     sh 'pwd'
-                    dir(./restaurant-system/microservices/service-registry/) {
+                    dir('restaurant-system/microservices/service-registry') {
                         sh 'mvn clean install'
                     }
              }
