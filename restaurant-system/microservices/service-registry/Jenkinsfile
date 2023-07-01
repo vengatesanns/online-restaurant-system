@@ -3,8 +3,10 @@ pipeline {
     stages {
         stage("Build") {
              steps {
-                echo ">>>>> Build Service Registry..."
-                mvn clean install
+                script {
+                    echo ">>>>> Build Service Registry..."
+                    mvn clean install
+                }
              }
         }
     }
