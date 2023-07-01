@@ -1,20 +1,43 @@
 pipeline {
     agent any
+
+    // Variable Declaration
+    def current_service_path = 'restaurant-system/microservices/service-registry'
+
+    // Pipeline Stages
     stages {
-      stage('pre-build') {
-       steps {
-            sh 'pwd'
-            sh 'ls -ltr'
-         }
-      }
-       stage('app-build') {
-             steps {
-                    echo ">>>>> Build Service Registry..."
-                    sh 'pwd'
-                    dir('restaurant-system/microservices/service-registry') {
-                        sh 'mvn clean install'
-                    }
-             }
+        stage('pre-build') {
+            steps {
+                sh 'pwd'
+                sh 'ls -ltr'
+            }
+        }
+        stage('app-build') {
+            steps {
+                echo ">>>>> Build Service Registry Jar..."
+                sh 'pwd'
+                dir(${current_service_path}) {
+                    sh 'mvn deploy'
+                }
+            }
+        }
+
+        stage('docker-build') {
+            steps {
+                echo ">>>>> Build Docker Images for Service Registry..."
+                sh 'pwd'
+                dir(${current_service_path}) {
+//                     sh 'mvn clean install'
+                }
+            }
+        }
+
+        stage('publish-jar-and-docker-image-to-github-packages') {
+            steps {
+                echo ">>>>> Publish App Build (.jar) to Github Packages"
+                // sh 'mvn '
+                echo ">>>>> Publish Docker Image Build) to Github Packages"
+            }
         }
     }
 }
