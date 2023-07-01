@@ -5,8 +5,10 @@ pipeline {
              steps {
                     echo ">>>>> Build Service Registry..."
                     sh 'pwd'
-                    sh 'rm -r ./*'
+                    // sh 'rm -r ./*'
                     sh 'cd ./restaurant-system/microservices/service-registry/'
+                    sh 'pwd'
+                    sh 'ls -ltr'
                     sh 'mvn clean install'
              }
         }
