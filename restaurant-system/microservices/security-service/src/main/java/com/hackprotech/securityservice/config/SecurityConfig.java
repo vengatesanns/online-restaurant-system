@@ -3,11 +3,8 @@ package com.hackprotech.securityservice.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 @Configuration
 public class SecurityConfig {
@@ -19,7 +16,7 @@ public class SecurityConfig {
 
 
     // @formatter:off
-    @Bean
+    /*@Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .cors().configurationSource(customCorsConfigurationSource)
@@ -34,7 +31,7 @@ public class SecurityConfig {
 //                .csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 .httpBasic();
         return httpSecurity.build();
-    }
+    }*/
     // @formatter:on
 
     @Bean
