@@ -16,7 +16,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/signup/sign-up.component';
 import { SpinnerComponent } from './components/utils/spinner/spinner.component';
 import { AppRequestInterceptor } from './interceptors/app-request.interceptor';
-import { PopoverModule } from 'ngx-bootstrap/popover';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   imports: [
@@ -30,8 +30,7 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
     MatCardModule,
     MatButtonModule,
     ReactiveFormsModule,
-    MatProgressSpinnerModule,
-    PopoverModule.forRoot()
+    MatProgressSpinnerModule
   ],
 
   declarations: [
@@ -45,7 +44,7 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
     provide: HTTP_INTERCEPTORS,
     useClass: AppRequestInterceptor,
     multi: true
-  }],
+  }, provideAnimationsAsync()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
